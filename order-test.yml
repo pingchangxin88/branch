@@ -1,13 +1,32 @@
+#本应用服务名
 spring:
   application:
     name: order
+  #mysql的数据库配置
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://127.0.0.1:3306/springcloud_sell?characterEncoding=utf-8&useSSL=false
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/SpringCloud_Sell?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    #配置JPA显示sql方便调试
+    jpa:
+      show-sql: true
+      #格式化显示的SQL语句
+      properties:
+        hibernate:
+          format_sql: true
+#打印sql语句中传入的参数值
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+#修改SpringCloud默认的轮询规则到随机规则
 PRODUCT:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 env:
-  test111111111111
+  test4
